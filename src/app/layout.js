@@ -1,5 +1,5 @@
-import '../assets/globals.css';
-import { yekan } from 'src/assets/fonts';
+import '@/assets/globals.css';
+import { yekan } from '@/assets/fonts';
 
 export const metadata = {
   title: 'Create Next App',
