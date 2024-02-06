@@ -1,4 +1,5 @@
 import '../assets/globals.css';
+import { yekan } from 'src/assets/fonts';
 
 export const metadata = {
   title: 'Create Next App',
@@ -7,7 +8,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fa" dir="rtl">
+    <html lang="fa" dir="rtl" className={yekan.variable}>
       <body>{children}</body>
     </html>
   );
