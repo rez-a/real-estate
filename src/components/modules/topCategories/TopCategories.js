@@ -4,10 +4,10 @@ import CategoriesByEstate from './categoriesEstate/CategoriesByEstate';
 
 const TopCategories = () => {
   return (
-    <>
+    <section>
       <CategoriesByDealing />
       <CategoriesByEstate />
-    </>
+    </section>
   );
 };
 

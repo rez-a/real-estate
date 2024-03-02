@@ -1,5 +1,6 @@
 import React from 'react';
-import TopCategories from '../modules/topCategories/TopCategories';
+import TopCategories from '@/modules/topCategories/TopCategories';
+import LatestFile from '@/modules/latestFiles/LatestFile';
 
 const HomePage = () => {
   return (
@@ -8,6 +9,7 @@ const HomePage = () => {
         سامانه خرید و اجاره ملک
       </h2>
       <TopCategories />
+      <LatestFile />
     </div>
   );
 };
