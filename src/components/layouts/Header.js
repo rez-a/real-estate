@@ -14,10 +14,13 @@ const Header = () => {
         </li>
       </ul>
       <div>
-        <button className="font-semibold bg-white text-blue-600 p-0.5 px-3 rounded">
+        <Link
+          href="/signup"
+          className="font-semibold bg-white text-blue-600 p-0.5 px-3 rounded"
+        >
           <FiLogIn className="inline font-semibold ml-1" />
           ورود
-        </button>
+        </Link>
       </div>
     </header>
   );
