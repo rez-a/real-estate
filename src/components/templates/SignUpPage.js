@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
-import { Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Link from 'next/link';
+import signupSchema from 'src/validations/signup/signupSchema';
 
 const SignUpPage = () => {
   return (
@@ -16,6 +17,7 @@ const SignUpPage = () => {
             password: '',
             confirmPassword: '',
           }}
+          validationSchema={signupSchema}
           onSubmit={(values) => {
             console.log(values);
           }}
@@ -35,6 +37,13 @@ const SignUpPage = () => {
                   id="email"
                   className="border border-blue-600 border-dashed rounded-md w-full p-1 outline-none"
                 />
+                <ErrorMessage name="email">
+                  {(msg) => (
+                    <small className="bg-rose-100 text-rose-700 font-semibold px-2 pt-0.5 rounded mt-2">
+                      {msg}
+                    </small>
+                  )}
+                </ErrorMessage>
               </div>
               <div className="flex flex-col items-start min-w-60 mb-6">
                 <label
@@ -49,6 +58,13 @@ const SignUpPage = () => {
                   id="password"
                   className="border border-blue-600 border-dashed rounded-md w-full p-1 outline-none"
                 />
+                <ErrorMessage name="password">
+                  {(msg) => (
+                    <small className="bg-rose-100 text-rose-700 font-semibold px-2 pt-0.5 rounded mt-2">
+                      {msg}
+                    </small>
+                  )}
+                </ErrorMessage>
               </div>
               <div className="flex flex-col items-start min-w-60 mb-6">
                 <label
@@ -63,6 +79,13 @@ const SignUpPage = () => {
                   id="confirmPassword"
                   className="border border-blue-600 border-dashed rounded-md w-full p-1 outline-none"
                 />
+                <ErrorMessage name="confirmPassword">
+                  {(msg) => (
+                    <small className="bg-rose-100 text-rose-700 font-semibold px-2 pt-0.5 rounded mt-2">
+                      {msg}
+                    </small>
+                  )}
+                </ErrorMessage>
               </div>
               <button className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition-all">
                 ثبت نام
