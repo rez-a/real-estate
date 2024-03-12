@@ -8,6 +8,7 @@ const signupSchema = Yup.object().shape({
     .email('لطفا ایمیل معتبر وارد کنید')
     .required('این فیلد اجباری است'),
   password: Yup.string()
+    .required('این فیلد اجباری است')
     .matches(passwordRgx, {
       message: 'رمز عبور آسان است',
     })

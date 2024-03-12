@@ -3,8 +3,28 @@ import React from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Link from 'next/link';
 import signupSchema from 'src/validations/signup/signupSchema';
+import { ThreeDots } from 'react-loader-spinner';
+import { Toaster, toast } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 const SignUpPage = () => {
+  const router = useRouter();
+  const handleSignUp = async (userData, callback) => {
+    const res = await fetch('/api/auth/signup', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+      headers: { 'Content-Types': 'application/json' },
+    });
+    const data = await res.json();
+    console.log(data);
+    if (res.ok) {
+      toast.success(data.message);
+      router.push('/signin');
+      callback();
+      return;
+    }
+    toast.error(data.error);
+  };
   return (
     <section className="flex flex-col items-center justify-center min-h-screen">
       <h2 className="text-blue-600 font-semibold text-2xl mb-4">
@@ -18,11 +38,14 @@ const SignUpPage = () => {
             confirmPassword: '',
           }}
           validationSchema={signupSchema}
-          onSubmit={(values) => {
-            console.log(values);
+          onSubmit={async (values, { setSubmitting, resetForm }) => {
+            const { email, password } = values;
+            await handleSignUp({ email, password }, resetForm);
+
+            setSubmitting(false);
           }}
         >
-          {() => (
+          {({ isSubmitting }) => (
             <Form>
               <div className="flex flex-col items-start min-w-60 mb-6">
                 <label
@@ -87,8 +110,23 @@ const SignUpPage = () => {
                   )}
                 </ErrorMessage>
               </div>
-              <button className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition-all">
-                ثبت نام
+              <button
+                type="submit"
+                className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition-all"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <ThreeDots
+                    visible={isSubmitting}
+                    height="40"
+                    width="40"
+                    color="#fff"
+                    radius="9"
+                    wrapperClass="justify-center"
+                  />
+                ) : (
+                  'ثبت نام'
+                )}
               </button>
             </Form>
           )}
@@ -105,6 +143,7 @@ const SignUpPage = () => {
           </Link>
         </span>
       </p>
+      <Toaster />
     </section>
   );
 };
