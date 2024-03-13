@@ -4,7 +4,7 @@ import User from 'src/models/User';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import NextAuth from 'next-auth/next';
 
-const authOptions = {
+export const authOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -35,7 +35,6 @@ const authOptions = {
       },
     }),
   ],
-  secret: 'D9qf80RA+VtfcIlsg1Y3vde+RDbs6vLiziRG30ijqsM=',
 };
 
 const handler = NextAuth(authOptions);

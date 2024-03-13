@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { FiLogIn } from 'react-icons/fi';
+import AuthStatus from './AuthStatus';
 
 const Header = () => {
   return (
@@ -14,13 +14,7 @@ const Header = () => {
         </li>
       </ul>
       <div>
-        <Link
-          href="/signup"
-          className="font-semibold bg-white text-blue-600 p-0.5 px-3 rounded"
-        >
-          <FiLogIn className="inline font-semibold ml-1" />
-          ورود
-        </Link>
+        <AuthStatus />
       </div>
     </header>
   );

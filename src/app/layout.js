@@ -1,6 +1,7 @@
 import '@/assets/globals.css';
 import { yekan } from '@/assets/fonts';
 import Layout from '@/components/layouts/Layout';
+import SessionProviders from '@/providers/SessionProvider';
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,7 +12,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" className={yekan.variable}>
       <body>
-        <Layout>{children}</Layout>
+        <SessionProviders>
+          <Layout>{children}</Layout>
+        </SessionProviders>
       </body>
     </html>
   );
