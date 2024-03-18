@@ -6,24 +6,18 @@ import signupSchema from 'src/validations/signup/signupSchema';
 import { ThreeDots } from 'react-loader-spinner';
 import { Toaster, toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { signupRequest } from 'src/services/axios/configs/auth/requests';
 
 const SignUpPage = () => {
   const router = useRouter();
   const handleSignUp = async (userData, callback) => {
-    const res = await fetch('/api/auth/signup', {
-      method: 'POST',
-      body: JSON.stringify(userData),
-      headers: { 'Content-Types': 'application/json' },
-    });
-    const data = await res.json();
-    console.log(data);
-    if (res.ok) {
-      toast.success(data.message);
+    const res = await signupRequest(userData);
+    if (res.data) {
+      toast.success(res.data.message);
       router.push('/signin');
       callback();
       return;
     }
-    toast.error(data.error);
   };
   return (
     <section className="flex flex-col items-center justify-center min-h-screen">
