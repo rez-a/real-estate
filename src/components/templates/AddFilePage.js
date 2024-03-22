@@ -6,6 +6,7 @@ import TextInput from '../shared/TextInput';
 import RadioGroupInput from '../shared/RadioGroupInput';
 import TextList from '../shared/textList/TextList';
 import addFilesSchema from 'src/validations/files/addFilesSchema';
+import CustomDatePicker from '../modules/datepicker/CustomDatePicker';
 
 const AddFilePage = () => {
   return (
@@ -29,14 +30,10 @@ const AddFilePage = () => {
         onSubmit={(values) => console.log(values)}
         validationSchema={addFilesSchema}
       >
-        {({ values, errors, touched }) => (
-          <Form>
+        {({ values, errors, touched, setFieldValue }) => (
+          <Form className="col-span-2 grid grid-cols-2 gap-4">
             <TextInput label="عنوان آگهی" name="title" />
-            <TextInput
-              label="توضیحات"
-              name="description"
-              textarea={true}
-            />
+
             <TextInput label="آدرس" name="address" />
             <TextInput label="شماره تماس" name="phone" />
             <TextInput label="قیمت (تومان) " name="price" />
@@ -51,6 +48,16 @@ const AddFilePage = () => {
               label="قوانین"
               name="rules"
               list={values.rules}
+            />
+            <CustomDatePicker
+              name="createdAt"
+              value={values.createdAt}
+              setValue={(value) => setFieldValue('createdAt', value)}
+            />
+            <TextInput
+              label="توضیحات"
+              name="description"
+              textarea={true}
             />
             <button
               type="submit"
