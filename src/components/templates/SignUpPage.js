@@ -7,6 +7,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import { Toaster, toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { signupRequest } from 'src/services/axios/configs/auth/requests';
+import Loading from '../shared/Loading';
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -109,18 +110,7 @@ const SignUpPage = () => {
                 className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition-all"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? (
-                  <ThreeDots
-                    visible={isSubmitting}
-                    height="40"
-                    width="40"
-                    color="#fff"
-                    radius="9"
-                    wrapperClass="justify-center"
-                  />
-                ) : (
-                  'ثبت نام'
-                )}
+                {isSubmitting ? <Loading /> : 'ثبت نام'}
               </button>
             </Form>
           )}

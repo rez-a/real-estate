@@ -7,8 +7,19 @@ import RadioGroupInput from '../shared/RadioGroupInput';
 import TextList from '../shared/textList/TextList';
 import addFilesSchema from 'src/validations/files/addFilesSchema';
 import CustomDatePicker from '../modules/datepicker/CustomDatePicker';
+import { addFileHandler } from 'src/services/axios/configs/dashboard/requests';
+import toast, { Toaster } from 'react-hot-toast';
+import Loading from '../shared/Loading';
 
 const AddFilePage = () => {
+  const submitHandler = async (data, callback) => {
+    const res = await addFileHandler(data);
+    if (res.data) {
+      toast.success(res.data.message);
+      callback();
+    }
+  };
+
   return (
     <div className="grid grid-cols-2">
       <h1 className="bg-blue-100 p-3 rounded-lg text-blue-600 font-semibold col-span-2 mb-8">
@@ -22,15 +33,24 @@ const AddFilePage = () => {
           phone: '',
           price: '',
           realState: '',
-          createdAt: new Date(),
+          constructorDate: new Date(),
           category: 'villa',
           rules: [],
           amenities: [],
         }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={async (values, { resetForm, setSubmitting }) => {
+          await submitHandler(values, resetForm);
+          setSubmitting(false);
+        }}
         validationSchema={addFilesSchema}
       >
-        {({ values, errors, touched, setFieldValue }) => (
+        {({
+          values,
+          errors,
+          touched,
+          setFieldValue,
+          isSubmitting,
+        }) => (
           <Form className="col-span-2 grid grid-cols-2 gap-4">
             <TextInput label="عنوان آگهی" name="title" />
 
@@ -50,9 +70,11 @@ const AddFilePage = () => {
               list={values.rules}
             />
             <CustomDatePicker
-              name="createdAt"
-              value={values.createdAt}
-              setValue={(value) => setFieldValue('createdAt', value)}
+              name="constructorDate"
+              value={values.constructorDate}
+              setValue={(value) =>
+                setFieldValue('constructorDate', value)
+              }
             />
             <TextInput
               label="توضیحات"
@@ -63,11 +85,12 @@ const AddFilePage = () => {
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-500 text-white text-center p-2 rounded-lg col-span-2"
             >
-              ثبت آگهی
+              {isSubmitting ? <Loading /> : 'ثبت آگهی'}
             </button>
           </Form>
         )}
       </Formik>
+      <Toaster />
     </div>
   );
 };
