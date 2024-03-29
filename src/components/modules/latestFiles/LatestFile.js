@@ -7,7 +7,7 @@ const LatestFile = () => {
       <h2 className="font-bold text-blue-600 text-2xl text-center">
         آخرین فایل ها
       </h2>
-      <Slider />
+      {/* <Slider /> */}
     </section>
   );
 };
