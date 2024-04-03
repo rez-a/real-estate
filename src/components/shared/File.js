@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { IoIosHome } from 'react-icons/io';
 import { CiLocationOn } from 'react-icons/ci';
 import { FaArrowLeft } from 'react-icons/fa6';
-import { FaCamera } from 'react-icons/fa';
 
 const File = ({ title, address, price }) => {
   return (
@@ -17,6 +16,7 @@ const File = ({ title, address, price }) => {
           fill
           sizes="20"
           className="object-cover"
+          priority
         />
       </div>
       <h2 className="font-semibold mt-2 line-clamp-1">

@@ -1,5 +1,6 @@
 import React from 'react';
 import DashboardFile from '../modules/dashboard/DashboardFile';
+import { Toaster } from 'react-hot-toast';
 
 const MyFilesPage = ({ files }) => {
   return !!files.length ? (
@@ -7,6 +8,7 @@ const MyFilesPage = ({ files }) => {
       {files.map((file) => (
         <DashboardFile key={file._id} file={file} />
       ))}
+      <Toaster />
     </div>
   ) : (
     <p className="bg-red-100 text-red-600 p-3 rounded-xl font-semibold">

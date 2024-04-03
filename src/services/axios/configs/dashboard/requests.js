@@ -1,6 +1,6 @@
 import dashboardInstance from '.';
 import handleRequests from '..';
-import { ADD_FILE, EDIT_FILE } from './endpoints';
+import { ADD_FILE, DELETE_FILE, EDIT_FILE } from './endpoints';
 
 const addFileHandler = async (data) => {
   const res = await handleRequests(dashboardInstance, {
@@ -20,4 +20,12 @@ const editFileHandler = async (data) => {
   return res;
 };
 
-export { addFileHandler, editFileHandler };
+const deleteFileHandler = async (id) => {
+  const res = await handleRequests(dashboardInstance, {
+    method: 'delete',
+    url: `${DELETE_FILE}/${id}`,
+  });
+  return res;
+};
+
+export { addFileHandler, editFileHandler, deleteFileHandler };
