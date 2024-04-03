@@ -8,8 +8,8 @@ const DashboardFile = ({ file }) => {
     <div className="relative group">
       <File {...file} />
       <div className="absolute right-4 top-4 text-xs hidden group-hover:block">
-        <EditFileBtn />
-        <DeleteFileBtn />
+        <EditFileBtn id={file._id} />
+        <DeleteFileBtn id={file._id} />
       </div>
     </div>
   );

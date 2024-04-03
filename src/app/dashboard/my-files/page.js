@@ -21,7 +21,9 @@ const MyFiles = async () => {
     },
   ]);
 
-  return <MyFilesPage files={user.files} />;
+  return (
+    <MyFilesPage files={JSON.parse(JSON.stringify(user.files))} />
+  );
 };
 
 export default MyFiles;

@@ -1,10 +1,14 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { CiEdit } from 'react-icons/ci';
 
-const EditFileBtn = () => {
-  const editHandler = () => {};
+const EditFileBtn = ({ id }) => {
+  const router = useRouter();
+  const editHandler = () => {
+    router.push(`/dashboard/edit-file/${id}`);
+  };
   return (
     <button
       onClick={editHandler}

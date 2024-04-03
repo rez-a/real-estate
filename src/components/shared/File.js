@@ -18,10 +18,6 @@ const File = ({ title, address, price }) => {
           sizes="20"
           className="object-cover"
         />
-        <div className="absolute left-2 top-2 p-2 py-0.5 pb-0 rounded bg-black/20 text-white">
-          <span className="font-semibold ml-1">{3}</span>
-          <FaCamera className="inline text-white" />
-        </div>
       </div>
       <h2 className="font-semibold mt-2 line-clamp-1">
         <IoIosHome

@@ -1,16 +1,15 @@
 import connectToDB from '@/utils/connectToDB';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
-import { authOptions } from '../../auth/[...nextauth]/route';
-import User from 'src/models/User';
 import File from 'src/models/File';
-import { Types } from 'mongoose';
+import User from 'src/models/User';
 
-export async function POST(req) {
+export async function PATCH(req) {
   try {
     await connectToDB();
 
     const {
+      _id,
       title,
       description,
       address,
@@ -23,16 +22,16 @@ export async function POST(req) {
       rules,
     } = await req.json();
 
-    const session = await getServerSession(authOptions);
-
+    const session = await getServerSession(req);
     if (!session)
       return NextResponse.json(
-        { error: 'لطفا ابتدا وارد حساب کاربری خود شوید' },
+        {
+          error: 'لطفا ابتدا وارد حساب کاربری خود شوید',
+        },
         { status: 401 }
       );
 
     const user = await User.findOne({ email: session.user.email });
-
     if (!user)
       return NextResponse.json(
         { error: 'کاربر وجود ندارد' },
@@ -54,23 +53,28 @@ export async function POST(req) {
         { status: 422 }
       );
 
-    const newFile = await File.create({
-      title,
-      description,
-      address,
-      phone,
-      price: +price,
-      realState,
-      category,
-      constructorDate,
-      amenities,
-      rules,
-      userId: new Types.ObjectId(user._id),
-    });
+    const file = await File.findOne({ _id });
+    if (!user._id.equals(file.userId))
+      return NextResponse.json(
+        { error: 'شما به این آگهی دسترسی ندارید' },
+        { status: 403 }
+      );
+
+    file.title = title;
+    file.description = description;
+    file.address = address;
+    file.phone = phone;
+    file.price = price;
+    file.realState = realState;
+    file.category = category;
+    file.constructorDate = constructorDate;
+    file.amenities = amenities;
+    file.rules = rules;
+    await file.save();
 
     return NextResponse.json(
-      { message: 'فایل با موفقیت ایجاد شد' },
-      { status: 201 }
+      { message: 'آگهی با موفقیت ویرایش شد' },
+      { status: 200 }
     );
   } catch (err) {
     console.log(err);

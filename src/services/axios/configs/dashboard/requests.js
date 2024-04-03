@@ -1,6 +1,6 @@
 import dashboardInstance from '.';
 import handleRequests from '..';
-import { ADD_FILE } from './endpoints';
+import { ADD_FILE, EDIT_FILE } from './endpoints';
 
 const addFileHandler = async (data) => {
   const res = await handleRequests(dashboardInstance, {
@@ -11,4 +11,13 @@ const addFileHandler = async (data) => {
   return res;
 };
 
-export { addFileHandler };
+const editFileHandler = async (data) => {
+  const res = await handleRequests(dashboardInstance, {
+    method: 'patch',
+    url: EDIT_FILE,
+    data,
+  });
+  return res;
+};
+
+export { addFileHandler, editFileHandler };
