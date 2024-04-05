@@ -6,7 +6,7 @@ import File from '@/components/shared/File';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 
-const Slider = (slides) => {
+const Slider = ({ files }) => {
   return (
     <Swiper
       modules={[Autoplay]}
@@ -16,9 +16,9 @@ const Slider = (slides) => {
       loop={true}
       className="!py-10"
     >
-      {[...Array(10)].map((file, index) => (
+      {files.map((file, index) => (
         <SwiperSlide key={index}>
-          <File />
+          <File {...file} />
         </SwiperSlide>
       ))}
     </Swiper>

@@ -16,7 +16,7 @@ const Category = ({ title, image, slug }) => {
       </div>
       <h2 className="text-center text-blue-600 font-bold">{title}</h2>
       <Link
-        href="/"
+        href={{ pathname: '/files', query: { category: slug } }}
         className="absolute w-full h-full left-0 top-0"
       />
     </div>

@@ -1,13 +1,13 @@
 import React from 'react';
 import Slider from '@/components/swiper/Swiper';
 
-const LatestFile = () => {
+const LatestFile = ({ files }) => {
   return (
     <section className="mt-20">
       <h2 className="font-bold text-blue-600 text-2xl text-center">
         آخرین فایل ها
       </h2>
-      {/* <Slider /> */}
+      <Slider files={files} />
     </section>
   );
 };
