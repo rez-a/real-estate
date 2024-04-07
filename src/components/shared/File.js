@@ -6,7 +6,7 @@ import { IoIosHome } from 'react-icons/io';
 import { CiLocationOn } from 'react-icons/ci';
 import { FaArrowLeft } from 'react-icons/fa6';
 
-const File = ({ title, address, price }) => {
+const File = ({ title, address, price, _id }) => {
   return (
     <article className="border border-blue-300 rounded-xl p-3 hover:rotate-2 transition-all">
       <div className="relative h-28 rounded-lg overflow-hidden">
@@ -36,7 +36,7 @@ const File = ({ title, address, price }) => {
       </p>
       <Link
         className="font-semibold text-blue-600 flex justify-between items-center mt-3"
-        href="/"
+        href={`/files/${_id}`}
       >
         <span>مشاهده آگهی</span>
         <span>
