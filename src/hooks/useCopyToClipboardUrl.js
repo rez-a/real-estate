@@ -1,5 +1,11 @@
+import { useEffect, useState } from 'react';
+
 const useCopyToClipboardUrl = () => {
-  const url = window.location.href;
+  const [url, setUrl] = useState('');
+
+  useEffect(() => {
+    setUrl(window.location.href);
+  }, []);
 
   const getter = () => url;
   const setter = () => navigator.clipboard.writeText(url);
