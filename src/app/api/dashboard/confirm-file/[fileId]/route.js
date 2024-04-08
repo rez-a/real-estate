@@ -5,7 +5,7 @@ import { ADMIN } from 'src/constants/roleUsers';
 import File from 'src/models/File';
 import User from 'src/models/User';
 
-export async function DELETE(req, context) {
+export async function PATCH(req, context) {
   try {
     await connectToDB();
     const id = context.params.fileId;
@@ -41,9 +41,10 @@ export async function DELETE(req, context) {
         { status: 403 }
       );
 
-    await File.deleteOne({ _id: id });
+    file.published = true;
+    file.save();
     return NextResponse.json(
-      { message: 'آگهی با موفقیت حذف شد' },
+      { message: 'آگهی با موفقیت منتشر شد' },
       { status: 200 }
     );
   } catch (err) {

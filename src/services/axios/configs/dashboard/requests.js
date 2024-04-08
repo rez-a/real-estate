@@ -1,6 +1,11 @@
 import dashboardInstance from '.';
 import handleRequests from '..';
-import { ADD_FILE, DELETE_FILE, EDIT_FILE } from './endpoints';
+import {
+  ADD_FILE,
+  CONFIRM_FILE,
+  DELETE_FILE,
+  EDIT_FILE,
+} from './endpoints';
 
 const addFileHandler = async (data) => {
   const res = await handleRequests(dashboardInstance, {
@@ -28,4 +33,17 @@ const deleteFileHandler = async (id) => {
   return res;
 };
 
-export { addFileHandler, editFileHandler, deleteFileHandler };
+const confirmFileHandler = async (id) => {
+  const res = await handleRequests(dashboardInstance, {
+    method: 'patch',
+    url: `${CONFIRM_FILE}/${id}`,
+  });
+  return res;
+};
+
+export {
+  addFileHandler,
+  editFileHandler,
+  deleteFileHandler,
+  confirmFileHandler,
+};

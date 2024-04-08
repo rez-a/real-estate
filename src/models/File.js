@@ -47,6 +47,10 @@ const fileSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
+  published: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const File = models.File || model('File', fileSchema);

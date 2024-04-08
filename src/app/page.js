@@ -4,7 +4,7 @@ import File from 'src/models/File';
 
 export default async function Home() {
   await connectToDB();
-  const latestFile = await File.find().limit(10);
+  const latestFile = await File.find({ published: true }).limit(10);
 
   return (
     <HomePage latestFile={JSON.parse(JSON.stringify(latestFile))} />

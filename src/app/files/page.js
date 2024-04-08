@@ -7,7 +7,7 @@ const Files = async ({ searchParams }) => {
   await connectToDB();
   const files =
     !searchParams?.category || searchParams?.category === 'all'
-      ? await File.find().select('-userId')
+      ? await File.find({ published: true }).select('-userId')
       : await File.find({
           category: searchParams.category,
         }).select('-userId');

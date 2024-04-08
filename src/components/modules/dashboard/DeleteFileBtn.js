@@ -13,7 +13,7 @@ const DeleteFileBtn = ({ id }) => {
     const toastId = toast.loading('درحال حذف فایل');
     const res = await deleteFileHandler(id);
     if (res?.data) {
-      toast.success('فایل با موفقیت حذف شد', { id: toastId });
+      toast.success(res.data.message, { id: toastId });
       router.refresh();
     }
     toast.remove(toastId);
