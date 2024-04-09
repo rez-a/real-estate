@@ -11,3 +11,15 @@ const FileDetails = async ({ params: { fileId } }) => {
 };
 
 export default FileDetails;
+
+export const generateMetadata = async ({ params: { fileId } }) => {
+  await connectToDB();
+  const file = await File.findOne({ _id: fileId });
+
+  return {
+    title: file.title,
+    description: file.description,
+    authors: [{ name: file.realState }],
+    category: file.category,
+  };
+};
