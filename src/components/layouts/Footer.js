@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-600 my-4 rounded-xl p-4 text-white flex items-center justify-between">
+    <footer className="bg-blue-600 my-4 rounded-xl p-4 text-white flex flex-col text-center md:flex-row md:text-right items-center justify-between">
       <div>
         <h2 className="font-bold text-xl mb-2">
           سامانه خرید و اجاره ملک

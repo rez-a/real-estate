@@ -9,7 +9,7 @@ const CategoriesByDealing = () => {
     { id: 4, title: 'اجاره', slug: 'rent' },
   ];
   return (
-    <ul className="flex items-center gap-4 justify-center mt-8">
+    <ul className="flex items-center gap-4 flex-wrap justify-center mt-8">
       {allCategories.map((category) => (
         <Category {...category} key={category.id} />
       ))}

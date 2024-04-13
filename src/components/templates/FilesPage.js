@@ -3,7 +3,7 @@ import File from '../shared/File';
 
 const FilesPage = ({ files }) => {
   return !!files.length ? (
-    <div className="grid grid-cols-4 gap-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
       {files.map((file) => (
         <File key={file._id} {...file} />
       ))}

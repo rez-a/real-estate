@@ -22,8 +22,8 @@ const FileDetailsPage = ({
   rules,
 }) => {
   return (
-    <div className="grid grid-cols-5 gap-8">
-      <div className="col-span-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+      <div className="col-span-1 md:col-span-2 lg:col-span-3 xl:col-span-4">
         <h1 className="font-bold text-2xl text-blue-600">{title}</h1>
         <p className="text-neutral-400 text-xs">
           <CiLocationOn className="inline ml-1" />

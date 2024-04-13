@@ -11,14 +11,14 @@ const Sidebar = () => {
   const search = searchParams.get('category');
 
   return (
-    <aside className="shadow-lg rounded-lg p-4">
+    <aside className="shadow-lg rounded-lg p-4 w-full md:w-fit">
       <h1>
         <FaFilter className="inline ml-1 text-blue-600" />
         <span className="font-bold">دسته بندی</span>
       </h1>
-      <ul className="text-neutral-500 space-y-3 mt-6">
+      <ul className="text-neutral-500 space-y-3 mt-6 w-full">
         {allCategories.map((category, index) => (
-          <li key={index} className="min-w-40">
+          <li key={index} className="min-w-40 w-full">
             <Link
               className={`w-full block hover:font-semibold ${
                 search == Object.keys(category) ? 'font-semibold' : ''

@@ -4,12 +4,13 @@ import React from 'react';
 
 const Category = ({ title, image, slug }) => {
   return (
-    <div className="flex-1 shadow-xl rounded-xl p-4 group relative">
+    <div className=" shadow-xl rounded-xl p-4 group relative">
       <div className=" m-4 relative h-40 rounded-xl overflow-hidden">
         <Image
           src={image}
           fill
           alt={title}
+          priority
           sizes="20"
           className="group-hover:scale-110 transition-all object-cover"
         />

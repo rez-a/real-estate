@@ -29,7 +29,7 @@ const CategoriesByEstate = () => {
     },
   ];
   return (
-    <ul className="flex items-center gap-8 mt-12">
+    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center gap-8 mt-12">
       {allCategories.map((category) => (
         <Category {...category} key={category.id} />
       ))}

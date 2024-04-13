@@ -11,9 +11,14 @@ const Slider = ({ files }) => {
     <Swiper
       modules={[Autoplay]}
       spaceBetween={50}
-      slidesPerView={4}
+      slidesPerView={1}
       autoplay={{ delay: 2000 }}
       loop={true}
+      breakpoints={{
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+        1280: { slidesPerView: 4 },
+      }}
       className="!py-10"
     >
       {files.map((file, index) => (

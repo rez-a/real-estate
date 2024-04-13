@@ -3,9 +3,9 @@ import React from 'react';
 
 const FilesLayout = ({ children }) => {
   return (
-    <div className="flex items-start gap-8">
+    <div className="flex flex-col sm:flex-row items-start gap-8">
       <Sidebar />
-      <div className="grow">{children}</div>
+      <div className="grow w-full">{children}</div>
     </div>
   );
 };

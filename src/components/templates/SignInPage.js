@@ -26,6 +26,28 @@ const SignInPage = () => {
 
   return (
     <section className="flex flex-col items-center justify-center min-h-screen">
+      <div className="text-xs text-neutral-600 bg-neutral-50 border border-neutral-200 rounded-xl p-4 mb-3">
+        <h3 className="font-semibold text-black mb-3">
+          کاربر های پیش فرض :
+        </h3>
+        <div className="flex items-center gap-4">
+          <ul>
+            <li>ادمین</li>
+            <li>admin@gmail.com</li>
+            <li>A@admin1234</li>
+          </ul>
+          <ul>
+            <li>کاربر 1</li>
+            <li>user1@gmail.com</li>
+            <li>U@user1234</li>
+          </ul>
+          <ul>
+            <li>کاربر 2</li>
+            <li>user2@gmail.com</li>
+            <li>U@user1234</li>
+          </ul>
+        </div>
+      </div>
       <h2 className="text-blue-600 font-semibold text-2xl mb-4">
         فرم ورود
       </h2>
