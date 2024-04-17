@@ -14,7 +14,7 @@ const DashboardSidebar = async () => {
   const { role } = await User.findOne({ email });
 
   return (
-    <aside className="shadow-lg rounded-lg p-4">
+    <aside className="shadow-lg rounded-lg p-4 w-full sm:w-fit">
       <FaRegUserCircle size={40} className="text-blue-600 mx-auto" />
       {role === ADMIN ? (
         <p className="text-black text-center mt-1 font-semibold">

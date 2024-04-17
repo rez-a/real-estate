@@ -41,7 +41,7 @@ const FileData = ({ data }) => {
   };
 
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-1 lg:grid-cols-2">
       <h1 className="bg-blue-100 p-3 rounded-lg text-blue-600 font-semibold col-span-2 mb-8">
         {data ? 'ویرایش آگهی' : 'ثبت آگهی'}
       </h1>
@@ -61,7 +61,7 @@ const FileData = ({ data }) => {
           setFieldValue,
           isSubmitting,
         }) => (
-          <Form className="col-span-2 grid grid-cols-2 gap-4">
+          <Form className="grid grid-cols-1 lg:grid-cols-2 lg:col-span-2 gap-4">
             <TextInput label="عنوان آگهی" name="title" />
 
             <TextInput label="آدرس" name="address" />
@@ -93,7 +93,7 @@ const FileData = ({ data }) => {
             />
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-500 text-white text-center p-2 rounded-lg col-span-2"
+              className="w-full bg-blue-600 hover:bg-blue-500 text-white text-center p-2 rounded-lg lg:col-span-2"
             >
               {isSubmitting ? (
                 <Loading />

@@ -10,9 +10,9 @@ export const metadata = {
 
 const DashboardLayout = async ({ children }) =>
   (await getServerSession(authOptions)) ? (
-    <div className="flex items-start my-8 gap-4 ">
+    <div className="flex flex-col sm:flex-row items-start gap-8">
       <DashboardSidebar />
-      <div id="content" className="grow">
+      <div id="content" className="grow w-full">
         {children}
       </div>
     </div>

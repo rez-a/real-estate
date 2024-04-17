@@ -10,7 +10,7 @@ const RadioGroupInput = ({ label, name }) => {
       >
         {label}
       </p>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <label
           htmlFor="villa"
           className="flex items-center justify-center gap-2 bg-blue-100 px-3 py-1 rounded-md"

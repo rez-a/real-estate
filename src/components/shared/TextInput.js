@@ -3,7 +3,7 @@ import React from 'react';
 
 const TextInput = ({ label, textarea = false, name }) => {
   return (
-    <div className="flex flex-col items-start min-w-60 mb-6">
+    <div className="flex flex-col items-start  md:min-w-60 mb-6">
       <label
         className="text-black text-sm font-semibold mb-2"
         htmlFor="email"
